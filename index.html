@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dofenshmirtz Malvados y Asociados</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN for clean icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        customBg: '#958ec2',
+                        customPrimary: '#b223cd',
+                        customSecondary: '#93ecaa',
+                        customDark: '#2a1a38',
+                        customCardBg: '#847cb5'
+                    },
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #958ec2;
+            color: #2a1a38;
+            overflow-x: hidden;
+        }
+
+        /* Hero Background with FondoPrincipal.jpg overlay */
+        .hero-banner {
+            background-image: linear-gradient(to bottom, rgba(42, 26, 56, 0.75), rgba(149, 142, 194, 0.90)), url('FondoPrincipal.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #958ec2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b223cd;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #93ecaa;
+        }
+    </style>
+</head>
+<body class="bg-customBg text-customDark flex flex-col min-h-screen">
+
+    <!-- BARRA MENU / HEADER -->
+    <header class="sticky top-0 z-50 bg-customBg/95 backdrop-blur-md border-b-2 border-customPrimary shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo solo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <img src="logo.png" alt="Logo Dofenshmirtz" class="h-12 w-auto object-contain transform group-hover:scale-105 transition-transform duration-200" onerror="this.onerror=null; this.src='https://placehold.co/120x60/b223cd/93ecaa?text=LOGO';">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-bold text-customDark">
+                <a href="#servicios" class="hover:text-customPrimary transition-colors py-1 relative group">
+                    Servicios
+                    <span class="absolute bottom-0 left-0 w-0 h-1 bg-customPrimary transition-all duration-300 group-hover:w-full rounded-full"></span>
+                </a>
+                <a href="#proceso" class="hover:text-customPrimary transition-colors py-1 relative group">
+                    Proceso
+                    <span class="absolute bottom-0 left-0 w-0 h-1 bg-customPrimary transition-all duration-300 group-hover:w-full rounded-full"></span>
+                </a>
+                <a href="#testimonios" class="hover:text-customPrimary transition-colors py-1 relative group">
+                    Testimonios
+                    <span class="absolute bottom-0 left-0 w-0 h-1 bg-customPrimary transition-all duration-300 group-hover:w-full rounded-full"></span>
+                </a>
+            </nav>
+
+            <!-- Solicita Aqui CTA -->
+            <div class="hidden md:block">
+                <a href="#solicitud" class="bg-customSecondary text-customDark font-montserrat font-extrabold px-6 py-3 rounded-xl border-2 border-customPrimary hover:bg-customPrimary hover:text-white transition-all duration-300 shadow-md inline-block uppercase tracking-wider">
+                    Solicita Aquí
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-customPrimary focus:outline-none p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-customCardBg border-b-2 border-customPrimary px-4 pt-2 pb-6 space-y-3">
+            <a href="#servicios" class="block text-white font-bold hover:text-customSecondary py-2 border-b border-customBg">Servicios</a>
+            <a href="#proceso" class="block text-white font-bold hover:text-customSecondary py-2 border-b border-customBg">Proceso</a>
+            <a href="#testimonios" class="block text-white font-bold hover:text-customSecondary py-2 border-b border-customBg">Testimonios</a>
+            <a href="#solicitud" class="block w-full text-center bg-customSecondary text-customDark font-montserrat font-extrabold py-3 rounded-xl border-2 border-customPrimary mt-4 uppercase">
+                Solicita Aquí
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- ENCABEZADO / HERO SECTION -->
+        <section class="hero-banner relative py-16 md:py-24 border-b-4 border-customPrimary">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <h1 class="font-montserrat text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight uppercase drop-shadow-md">
+                            ¿PLANES DE DOMINACION <span class="text-customSecondary block mt-2">FRUSTRADOS?</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl text-customSecondary font-bold max-w-2xl mx-auto lg:mx-0 drop-shadow">
+                            Fabricamos el -Inador a tu medida
+                        </p>
+
+                        <div class="pt-6">
+                            <a href="#solicitud" class="inline-block bg-customPrimary text-white font-montserrat font-black text-lg sm:text-xl px-8 py-5 rounded-2xl border-4 border-customSecondary hover:bg-customSecondary hover:text-customDark transition-all duration-300 shadow-xl transform hover:-translate-y-1 uppercase tracking-wider">
+                                ¡SOLICITA TU -INADOR!
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Image (Doof.png) -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative bg-customSecondary/20 p-4 rounded-3xl border-4 border-customSecondary max-w-sm sm:max-w-md w-full shadow-2xl backdrop-blur-sm">
+                            <img src="Doof.png" alt="Dr. Doofenshmirtz" class="w-full h-auto object-contain rounded-2xl" onerror="this.onerror=null; this.src='https://placehold.co/400x400/93ecaa/2a1a38?text=Dr.+Doofenshmirtz';">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CATALOGO Y SERVICIOS DETALLADOS -->
+        <section id="servicios" class="py-20 border-b-2 border-customPrimary/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <h2 class="font-montserrat text-3xl sm:text-4xl font-black text-customPrimary uppercase tracking-wider">
+                        CATALOGO Y SERVICIOS DETALLADOS
+                    </h2>
+                    <div class="h-2 w-32 bg-customSecondary mx-auto rounded-full"></div>
+                </div>
+
+                <!-- Catalog Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1: Rayos de Control -->
+                    <div class="bg-customSecondary rounded-2xl border-4 border-customPrimary p-6 flex flex-col justify-between shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="space-y-4">
+                            <div class="w-16 h-16 bg-customPrimary text-customSecondary rounded-2xl flex items-center justify-center text-3xl border-2 border-white">
+                                <i class="fa-solid fa-satellite-dish"></i>
+                            </div>
+                            <h3 class="font-montserrat font-extrabold text-2xl text-customDark">
+                                Rayos de Control
+                            </h3>
+                            <p class="text-customDark font-medium text-sm leading-relaxed">
+                                Controla mentes y dispositivos electromagnéticos a larga distancia con precisión milimétrica.
+                            </p>
+                        </div>
+                        <button onclick="openModal('Rayos de Control', 'Diseño exclusivo para tomar el control del Área Limítrofe. Alcance personalizable con interruptores ajustables.')" class="mt-6 w-full py-3 bg-customPrimary text-white font-montserrat font-bold rounded-xl border-2 border-customDark hover:bg-customDark hover:text-customSecondary transition-colors uppercase text-sm">
+                            Ver Detalles
+                        </button>
+                    </div>
+
+                    <!-- Card 2: Dispositivos Encogedores -->
+                    <div class="bg-customSecondary rounded-2xl border-4 border-customPrimary p-6 flex flex-col justify-between shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="space-y-4">
+                            <div class="w-16 h-16 bg-customPrimary text-customSecondary rounded-2xl flex items-center justify-center text-3xl border-2 border-white">
+                                <i class="fa-solid fa-compress"></i>
+                            </div>
+                            <h3 class="font-montserrat font-extrabold text-2xl text-customDark">
+                                Dispositivos Encogedores
+                            </h3>
+                            <p class="text-customDark font-medium text-sm leading-relaxed">
+                                Reduce cualquier objeto, monumento o rival al tamaño exacto de un grano de arroz.
+                            </p>
+                        </div>
+                        <button onclick="openModal('Dispositivos Encogedores', 'Permite miniaturizar objetos a escala microscópica sin alterar la masa original de manera peligrosa.')" class="mt-6 w-full py-3 bg-customPrimary text-white font-montserrat font-bold rounded-xl border-2 border-customDark hover:bg-customDark hover:text-customSecondary transition-colors uppercase text-sm">
+                            Ver Detalles
+                        </button>
+                    </div>
+
+                    <!-- Card 3: Cohetes de Venganza -->
+                    <div class="bg-customSecondary rounded-2xl border-4 border-customPrimary p-6 flex flex-col justify-between shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="space-y-4">
+                            <div class="w-16 h-16 bg-customPrimary text-customSecondary rounded-2xl flex items-center justify-center text-3xl border-2 border-white">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <h3 class="font-montserrat font-extrabold text-2xl text-customDark">
+                                Cohetes de Venganza
+                            </h3>
+                            <p class="text-customDark font-medium text-sm leading-relaxed">
+                                Sistemas de propulsión de alta potencia para enviar tus rencores del pasado directamente a la luna.
+                            </p>
+                        </div>
+                        <button onclick="openModal('Cohetes de Venganza', 'Equipados con propulsores de alta capacidad y trayectoria calculada para una venganza limpia y rápida.')" class="mt-6 w-full py-3 bg-customPrimary text-white font-montserrat font-bold rounded-xl border-2 border-customDark hover:bg-customDark hover:text-customSecondary transition-colors uppercase text-sm">
+                            Ver Detalles
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFICIOS DE ELEGIRNOS -->
+        <section id="beneficios" class="py-20 bg-customCardBg/40 border-b-2 border-customPrimary/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <h2 class="font-montserrat text-3xl sm:text-4xl font-black text-customPrimary uppercase tracking-wider">
+                        BENEFICIOS DE ELEGIRNOS
+                    </h2>
+                    <div class="h-2 w-32 bg-customSecondary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <div class="bg-customBg p-8 rounded-2xl border-4 border-customSecondary text-center space-y-4 shadow-lg">
+                        <div class="w-16 h-16 bg-customPrimary text-customSecondary rounded-full flex items-center justify-center mx-auto text-2xl border-2 border-white">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h3 class="font-montserrat font-extrabold text-xl text-white">Diseños Únicos</h3>
+                        <p class="text-customDark font-semibold text-sm">
+                            Adaptados 100% a la historia trágica de tu infancia o pasado.
+                        </p>
+                    </div>
+
+                    <div class="bg-customBg p-8 rounded-2xl border-4 border-customSecondary text-center space-y-4 shadow-lg">
+                        <div class="w-16 h-16 bg-customPrimary text-customSecondary rounded-full flex items-center justify-center mx-auto text-2xl border-2 border-white">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <h3 class="font-montserrat font-extrabold text-xl text-white">Entrega Discreta</h3>
+                        <p class="text-customDark font-semibold text-sm">
+                            Despacho directo a tu guarida sin alertar a la O.W.C.A.
+                        </p>
+                    </div>
+
+                    <div class="bg-customBg p-8 rounded-2xl border-4 border-customSecondary text-center space-y-4 shadow-lg">
+                        <div class="w-16 h-16 bg-customPrimary text-customSecondary rounded-full flex items-center justify-center mx-auto text-2xl border-2 border-white">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="font-montserrat font-extrabold text-xl text-white">Garantía Malvada</h3>
+                        <p class="text-customDark font-semibold text-sm">
+                            Soporte técnico certificado directamente por el Dr. Doofenshmirtz.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESO DE FABRICACIÓN -->
+        <section id="proceso" class="py-20 border-b-2 border-customPrimary/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <h2 class="font-montserrat text-3xl sm:text-4xl font-black text-customPrimary uppercase tracking-wider">
+                        PROCESO DE FABRICACIÓN
+                    </h2>
+                    <div class="h-2 w-32 bg-customSecondary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+                    
+                    <!-- PASO 1 -->
+                    <div class="bg-customSecondary p-6 rounded-2xl border-4 border-customPrimary text-center space-y-2 shadow-lg">
+                        <span class="font-montserrat font-black text-lg text-customPrimary block">PASO 1</span>
+                        <h3 class="font-montserrat font-extrabold text-xl text-customDark">Cuéntanos tu plan</h3>
+                    </div>
+
+                    <!-- Arrow 1 -->
+                    <div class="hidden md:flex justify-center text-customSecondary text-4xl">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </div>
+
+                    <!-- PASO 2 -->
+                    <div class="bg-customSecondary p-6 rounded-2xl border-4 border-customPrimary text-center space-y-2 shadow-lg">
+                        <span class="font-montserrat font-black text-lg text-customPrimary block">PASO 2</span>
+                        <h3 class="font-montserrat font-extrabold text-xl text-customDark">Fabricación</h3>
+                    </div>
+
+                    <!-- Arrow 2 -->
+                    <div class="hidden md:flex justify-center text-customSecondary text-4xl">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </div>
+
+                    <!-- PASO 3 -->
+                    <div class="bg-customSecondary p-6 rounded-2xl border-4 border-customPrimary text-center space-y-2 shadow-lg">
+                        <span class="font-montserrat font-black text-lg text-customPrimary block">PASO 3</span>
+                        <h3 class="font-montserrat font-extrabold text-xl text-customDark">Entrega</h3>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIOS DE NUESTROS CLIENTES -->
+        <section id="testimonios" class="py-20 bg-customCardBg/40 border-b-2 border-customPrimary/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <h2 class="font-montserrat text-3xl sm:text-4xl font-black text-customPrimary uppercase tracking-wider">
+                        TESTIMONIOS DE NUESTROS CLIENTES
+                    </h2>
+                    <div class="h-2 w-32 bg-customSecondary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Testimonial 1 -->
+                    <div class="bg-customBg p-8 rounded-2xl border-4 border-customPrimary shadow-xl space-y-4">
+                        <p class="text-white text-lg font-bold italic">
+                            «¡El inador funcionó de maravilla en mi venganza!»
+                        </p>
+                        <span class="block text-right font-montserrat font-black text-customSecondary text-base">
+                            .- ANONIMO
+                        </span>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="bg-customBg p-8 rounded-2xl border-4 border-customPrimary shadow-xl space-y-4">
+                        <p class="text-white text-lg font-bold italic">
+                            «Excelente servicio, la entrega fue muy rapida en mi guarida»
+                        </p>
+                        <span class="block text-right font-montserrat font-black text-customSecondary text-base">
+                            .- ANONIMO
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLICITA TU INADOR HOY -->
+        <section id="solicitud" class="py-20">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="bg-customSecondary p-8 sm:p-12 rounded-3xl border-4 border-customPrimary shadow-2xl space-y-8">
+                    
+                    <div class="text-center space-y-2">
+                        <h2 class="font-montserrat text-3xl sm:text-4xl font-black text-customDark uppercase">
+                            SOLICITA TU INADOR HOY
+                        </h2>
+                        <p class="text-customDark font-bold text-sm">
+                            Llena la información requerida y nuestro laboratorio comenzará de inmediato.
+                        </p>
+                    </div>
+
+                    <form id="solicitudForm" class="space-y-6">
+                        <div>
+                            <label for="nombre-villano" class="block font-montserrat font-black text-customDark uppercase text-sm mb-2">
+                                - Nombre del villano -
+                            </label>
+                            <input type="text" id="nombre-villano" required placeholder="Ingresa tu nombre malvado" class="w-full bg-white border-2 border-customPrimary rounded-xl p-4 text-customDark font-bold focus:outline-none focus:ring-4 focus:ring-customPrimary">
+                        </div>
+
+                        <div>
+                            <label for="tipo-inador" class="block font-montserrat font-black text-customDark uppercase text-sm mb-2">
+                                - Tipo de inador deseado -
+                            </label>
+                            <input type="text" id="tipo-inador" required placeholder="Ej. Desintegrador-Inador" class="w-full bg-white border-2 border-customPrimary rounded-xl p-4 text-customDark font-bold focus:outline-none focus:ring-4 focus:ring-customPrimary">
+                        </div>
+
+                        <div>
+                            <label for="presupuesto" class="block font-montserrat font-black text-customDark uppercase text-sm mb-2">
+                                - Presupuesto aproximado -
+                            </label>
+                            <input type="text" id="presupuesto" required placeholder="Monto o facilidades de pago" class="w-full bg-white border-2 border-customPrimary rounded-xl p-4 text-customDark font-bold focus:outline-none focus:ring-4 focus:ring-customPrimary">
+                        </div>
+
+                        <button type="submit" class="w-full py-5 bg-customPrimary text-white font-montserrat font-black text-lg sm:text-xl rounded-xl border-2 border-customDark hover:bg-customDark hover:text-customSecondary transition-all duration-300 uppercase tracking-wider shadow-xl">
+                            ENVIAR SOLICITUD
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-customDark text-white border-t-4 border-customPrimary py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div>
+                <p class="font-bold text-sm text-customSecondary">
+                    Edificio Dofenshmirtz Malvados y Asociados, Danville
+                </p>
+            </div>
+            <div>
+                <p class="font-montserrat font-black text-customPrimary text-base">
+                    L.O.V.E.M.U.F.I.N. @ 2026
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE DETALLES -->
+    <div id="detailModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-customSecondary border-4 border-customPrimary max-w-md w-full p-6 rounded-2xl space-y-4 shadow-2xl relative">
+            <h3 id="modalTitle" class="font-montserrat font-black text-2xl text-customDark uppercase"></h3>
+            <p id="modalDescription" class="text-customDark font-bold text-base leading-relaxed"></p>
+            <div class="pt-4 flex justify-end">
+                <button onclick="closeModal()" class="px-6 py-2.5 bg-customPrimary text-white font-montserrat font-extrabold text-sm rounded-xl border-2 border-customDark hover:bg-customDark hover:text-customSecondary">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN TOAST -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-customSecondary text-customDark font-montserrat font-black text-sm px-6 py-4 rounded-2xl shadow-2xl hidden z-50 border-4 border-customPrimary items-center space-x-3">
+        <i class="fa-solid fa-circle-check text-2xl text-customPrimary"></i>
+        <span id="toastMessage">¡Solicitud recibida correctamente!</span>
+    </div>
+
+    <!-- SCRIPT DE INTERACCIÓN -->
+    <script>
+        // Toggle Menu Mobile
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
